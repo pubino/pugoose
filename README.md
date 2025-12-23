@@ -111,6 +111,87 @@ Edit `~/.config/goose/config.yaml`:
 GOOSE_MODEL: gemini-2.0-flash
 ```
 
+## Extensions
+
+Extensions expand Goose's capabilities by connecting to external tools and applications. They're built on the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
+
+### Built-in Extensions
+
+| Extension | Purpose |
+|-----------|---------|
+| Developer | Code editing, shell commands (enabled by default) |
+| Computer Controller | Control mouse, keyboard, screen |
+| Memory | Persist information across sessions |
+| Tutorial | Interactive onboarding |
+| Auto Visualiser | Generate visualizations |
+| Chat Recall | Search conversation history |
+| Todo | Task tracking |
+
+### Managing Extensions
+
+**Via CLI:**
+```bash
+goose configure
+```
+Then select "Add Extension" or "Toggle Extensions"
+
+**Via config file** (`~/.config/goose/config.yaml`):
+```yaml
+extensions:
+  github:
+    name: GitHub
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-github"]
+    timeout: 300
+    env:
+      GITHUB_TOKEN: your-token
+```
+
+### Popular MCP Extensions
+
+Install any MCP server from the [MCP Server Directory](https://www.pulsemcp.com/servers):
+
+```yaml
+extensions:
+  # File system access
+  filesystem:
+    name: Filesystem
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-filesystem", "/path/to/allow"]
+
+  # SQLite database
+  sqlite:
+    name: SQLite
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-sqlite", "--db-path", "./data.db"]
+
+  # Web browsing
+  puppeteer:
+    name: Puppeteer
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-puppeteer"]
+
+  # Slack integration
+  slack:
+    name: Slack
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-slack"]
+    env:
+      SLACK_BOT_TOKEN: xoxb-your-token
+      SLACK_TEAM_ID: T01234567
+```
+
+### Session-Specific Extensions
+
+Enable an extension for just one session:
+```bash
+goose session --with-extension github
+```
+
+### Smart Extension Recommendation
+
+Goose can automatically suggest and enable extensions based on your task. When you ask Goose to do something that requires an extension, it will offer to enable the appropriate one.
+
 ## Cost-Effective Recommendations
 
 For daily coding tasks, use these budget-friendly models:
