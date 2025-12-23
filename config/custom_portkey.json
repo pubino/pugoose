@@ -1,0 +1,83 @@
+{
+  "name": "custom_portkey",
+  "engine": "openai",
+  "display_name": "Portkey AI Gateway",
+  "description": "Portkey AI Gateway - Access OpenAI, Anthropic, Google, Mistral, and Meta models",
+  "api_key_env": "CUSTOM_PORTKEY_API_KEY",
+  "base_url": "https://api.portkey.ai/v1/chat/completions",
+  "models": [
+    {
+      "name": "gpt-5",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gpt-4o",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gpt-4o-mini",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gpt-4-turbo",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "o3-mini",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "claude-sonnet-4-20250514",
+      "context_limit": 200000,
+      "supports_streaming": true
+    },
+    {
+      "name": "claude-3-5-sonnet-20241022",
+      "context_limit": 200000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gemini-2.5-pro",
+      "context_limit": 1000000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gemini-2.5-flash",
+      "context_limit": 1000000,
+      "supports_streaming": true
+    },
+    {
+      "name": "gemini-2.0-flash",
+      "context_limit": 1000000,
+      "supports_streaming": true
+    },
+    {
+      "name": "mistral-small-2503",
+      "context_limit": 32000,
+      "supports_streaming": true
+    },
+    {
+      "name": "Mistral-Large-2411",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "Llama-3.3-70B-Instruct",
+      "context_limit": 128000,
+      "supports_streaming": true
+    },
+    {
+      "name": "Meta-Llama-3-1-8B-Instruct",
+      "context_limit": 128000,
+      "supports_streaming": true
+    }
+  ],
+  "headers": null,
+  "timeout_seconds": 120,
+  "supports_streaming": true
+}

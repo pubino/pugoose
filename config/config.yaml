@@ -1,0 +1,2 @@
+GOOSE_PROVIDER: custom_portkey
+GOOSE_MODEL: gpt-4o-mini
