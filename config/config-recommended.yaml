@@ -1,0 +1,47 @@
+# Goose Configuration with Portkey + Recommended Extensions
+#
+# Required environment variables:
+#   CUSTOM_PORTKEY_API_KEY - Your Portkey API key
+#   BRAVE_API_KEY - Free at https://api-dashboard.search.brave.com/app/keys
+#   GITHUB_PERSONAL_ACCESS_TOKEN - Create at https://github.com/settings/tokens
+#
+# Copy this file to ~/.config/goose/config.yaml
+
+GOOSE_PROVIDER: custom_portkey
+GOOSE_MODEL: gpt-4o-mini
+
+extensions:
+  # Web search via Brave Search API
+  # Free tier: 2,000 queries/month
+  brave-search:
+    name: Brave Search
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-brave-search"]
+    timeout: 300
+    env:
+      BRAVE_API_KEY: ${BRAVE_API_KEY}
+
+  # GitHub integration for repository management
+  # Capabilities: create/read repos, manage issues/PRs, file operations, search
+  github:
+    name: GitHub
+    cmd: npx
+    args: [-y, "@modelcontextprotocol/server-github"]
+    timeout: 300
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+
+  # Git operations for local repositories
+  # Capabilities: status, diff, log, show, blame, branch listing
+  # Note: Uses uvx (install via: pip install uvx)
+  git:
+    name: Git
+    cmd: uvx
+    args: [mcp-server-git]
+    timeout: 300
+
+  # Developer tools (built-in, enabled by default)
+  # Capabilities: code editing, shell commands, file operations
+  developer:
+    name: Developer
+    enabled: true

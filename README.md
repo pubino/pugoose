@@ -115,6 +115,37 @@ GOOSE_MODEL: gemini-2.0-flash
 
 Extensions expand Goose's capabilities by connecting to external tools and applications. They're built on the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
 
+### Recommended Setup for Developers
+
+For a complete development environment with web search, Git/GitHub integration, and local code repository access, use the recommended config:
+
+```bash
+cp config/config-recommended.yaml ~/.config/goose/config.yaml
+```
+
+This enables:
+- **Brave Search** - Web search capabilities (requires free API key)
+- **GitHub** - Repository management, issues, PRs, file operations
+- **Git** - Local git operations (status, diff, log, commits)
+- **Developer** - Built-in code editing and shell commands
+
+**Required API Keys:**
+
+Add to your `~/.zshrc` or `~/.bashrc`:
+
+```bash
+# Portkey (required)
+export CUSTOM_PORTKEY_API_KEY="your-portkey-api-key"
+
+# Brave Search - Get free key at https://api-dashboard.search.brave.com/app/keys
+# Free tier: 2,000 queries/month
+export BRAVE_API_KEY="your-brave-api-key"
+
+# GitHub - Create at https://github.com/settings/tokens
+# Required scopes: repo, read:org, read:user
+export GITHUB_PERSONAL_ACCESS_TOKEN="your-github-token"
+```
+
 ### Built-in Extensions
 
 | Extension | Purpose |
